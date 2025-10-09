@@ -1,28 +1,19 @@
 using UnityEngine;
 
-public class ProjectileCollisionScript : MonoBehaviour
+public class LazarDestoryerScript : MonoBehaviour
 {
-    // The amount of damage this projectile deals.
-    public float damage = 10f;
-    public float health = 100f;
+    public float damage = 100f;
 
-    // Called when the projectile collides with another object.
     void OnCollisionEnter2D(Collision2D collision)
     {
-        
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Laser"))
         {
-            Debug.Log("Projectile hit: Enemy " + collision.gameObject.name);
-
             Damageable target = collision.gameObject.GetComponent<Damageable>();
             if (target != null)
             {
                 // Call the TakeDamage method on the target.
                 target.TakeDamage(damage);
             }
-
-            // Destroy this projectile after hitting something.
-            Destroy(gameObject);
         }
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
