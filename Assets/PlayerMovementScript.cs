@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerMovementScript:MonoBehaviour
+public class PlayerMovementScript : MonoBehaviour
 {
     public Vector3 leftDirection;
     public Vector3 rightDirection;
@@ -9,12 +9,12 @@ public class PlayerMovementScript:MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKey(KeyCode.A))
+        if(Input.GetKey(KeyCode.LeftArrow))
         {
             GetComponent<Transform>().position += leftDirection;
         }
         
-        if(Input.GetKey(KeyCode.D))
+        if(Input.GetKey(KeyCode.RightArrow))
         {
             GetComponent<Transform>().position += rightDirection;
             
