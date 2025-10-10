@@ -17,7 +17,7 @@ public class Damageable : MonoBehaviour
 
     private void Die()
     {
-        Debug.Log(gameObject.name + "Enemy has been destroyed.");
+        Debug.Log(gameObject.name + " has been destroyed.");
         Destroy(gameObject);
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created

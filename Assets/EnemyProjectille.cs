@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ProjectileCollisionScript : MonoBehaviour
+public class EnemyProjectille : MonoBehaviour
 {
     // The amount of damage this projectile deals.
     public float damage = 10f;
@@ -10,7 +10,7 @@ public class ProjectileCollisionScript : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision)
     {
         
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Player"))
         {
             Debug.Log("Projectile hit: " + collision.gameObject.name);
 
