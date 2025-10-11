@@ -5,7 +5,6 @@ public class PlayerMovementScript : MonoBehaviour
     public Vector3 leftDirection;
     public Vector3 rightDirection;
 
-    public GameObject gameManager;
 
     void Update()
     {

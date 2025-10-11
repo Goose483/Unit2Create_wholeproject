@@ -12,6 +12,9 @@ public class EnemyShooter : MonoBehaviour
     public float initialDelay = 0f;
     public float upwardForce = 5f;
     public AudioClip shootSound;
+    // Simple iteration: number of projectiles spawned each time Shoot() runs.
+    // Default 1 keeps the script behaviour the same.
+    public int shotsPerFire = 1;
     
 
     // Update is called once per frame
@@ -47,18 +50,17 @@ public class EnemyShooter : MonoBehaviour
             AudioSource.PlayClipAtPoint(shootSound, firePoint.position);
         }
 
-        // Make the laser appear at the fire point
-        GameObject projectile = Instantiate(laser3, firePoint.position, firePoint.rotation);
-
-        // Get the Rigidbody2D so we can move it
-        Rigidbody2D rb2d = projectile.GetComponent<Rigidbody2D>();
-
-        if (rb2d != null)
+        // Spawn as many projectiles as requested (default 1)
+        int count = Mathf.Max(1, shotsPerFire);
+        for (int i = 0; i < count; i++)
         {
-            rb2d.gravityScale = 0; // Don't let gravity pull the laser down
-
-            // Make the laser go up
-            rb2d.AddForce(Vector2.down * projectileSpeed, ForceMode2D.Impulse);
+            GameObject projectile = Instantiate(laser3, firePoint.position, firePoint.rotation);
+            Rigidbody2D rb2d = projectile.GetComponent<Rigidbody2D>();
+            if (rb2d != null)
+            {
+                rb2d.gravityScale = 0;
+                rb2d.AddForce(Vector2.down * projectileSpeed, ForceMode2D.Impulse);
+            }
         }
     }
 

@@ -166,7 +166,7 @@ MonoBehaviour:
   projectileSpeed: 20
   firePoint: {fileID: 1750487039325824081}
   fireRate: 1
-  initialDelay: 1
+  initialDelay: 0.5
   upwardForce: 5
   shootSound: {fileID: 8300000, guid: d10ac8e0689a248b69cc2febbdc23fee, type: 3}
 --- !u!1 &8924290561071504986
