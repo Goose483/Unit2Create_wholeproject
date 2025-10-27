@@ -1,19 +1,13 @@
 using UnityEngine;
-
+using TMPro;
 public class GameManagerScript : MonoBehaviour
 {
-    public GameObject enemyPrefab;
-    public Vector3 enemyPos1;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        Instantiate(enemyPrefab, enemyPos1, Quaternion.identity);
-    }
+  [SerializeField] TMP_Text scoreText;
+  [SerializeField] float score;
 
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+  private void Update()
+  {
+        score =+ 1; 
+        scoreText = score.ToString;
+  }
 }

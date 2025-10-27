@@ -9,11 +9,6 @@ public class PlayerShootingScript : MonoBehaviour
     private float nextFireTime = 0f;
     public float upwardForce = 5f;
     public AudioClip shootSound;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-
-    }
 
     // Update is called once per frame
     void Update()

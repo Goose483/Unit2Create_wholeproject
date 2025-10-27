@@ -13,17 +13,17 @@ public class EnemyShooter : MonoBehaviour
     public float upwardForce = 5f;
     public AudioClip shootSound;
     // Simple iteration: number of projectiles spawned each time Shoot() runs.
-    // Default 1 keeps the script behaviour the same.
     public int shotsPerFire = 1;
     
 
     // Update is called once per frame
     void Update()
     {
-        // Automatic firing on a timer (no player input required).
+        // Automatic firing on a timer.
         if (Time.time >= nextFireTime)
         {
             Shoot();
+            fireRate = Random.Range(.5f,1f);
         }
     }
 
@@ -31,7 +31,7 @@ public class EnemyShooter : MonoBehaviour
     {
         // schedule next shot
         nextFireTime = Time.time + fireRate;
-        // Play the shooting sound if there is one
+
         // Basic safety checks
         if (laser3 == null)
         {
@@ -59,24 +59,9 @@ public class EnemyShooter : MonoBehaviour
             if (rb2d != null)
             {
                 rb2d.gravityScale = 0;
-                rb2d.AddForce(Vector2.down * projectileSpeed, ForceMode2D.Impulse);
+                rb2d.AddForce(Vector2.up * projectileSpeed, ForceMode2D.Impulse);
             }
         }
-    }
-
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        // Ensure fireRate is positive to avoid zero/negative spam or instant-firing
-        if (fireRate <= 0f)
-        {
-            Debug.LogWarning("EnemyShooter: 'fireRate' must be > 0. Defaulting to 0.5f.");
-            fireRate = 0.5f;
-        }
-
-        // Schedule first shot after optional initial delay
-        nextFireTime = Time.time + initialDelay;
     }
 
 }
