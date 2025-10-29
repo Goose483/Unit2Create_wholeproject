@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 1887243270027919008}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.12, y: 1.25, z: 0}
+  m_LocalPosition: {x: -0.12, y: 1.33, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 7740824853387597259}
   - component: {fileID: 1415571581101519485}
   - component: {fileID: 5884176788897680622}
+  - component: {fileID: 6765660210555686439}
   m_Layer: 0
   m_Name: Invader6
   m_TagString: Enemy
@@ -60,7 +61,7 @@ Transform:
   m_GameObject: {fileID: 4059206954978363191}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.536026, y: -6.017798, z: 0}
+  m_LocalPosition: {x: 0.19486535, y: -7.251223, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -201,3 +202,18 @@ MonoBehaviour:
   upwardForce: 5
   shootSound: {fileID: 8300000, guid: d10ac8e0689a248b69cc2febbdc23fee, type: 3}
   shotsPerFire: 1
+--- !u!114 &6765660210555686439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4059206954978363191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c178fc5f11bf44e6ca6d0d602c9bd3ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: {x: 0.5, y: 0, z: 0}
+  speedOpposite: {x: -1, y: 0, z: 0}
+  up: {x: 0, y: 1, z: 0}
