@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - LazarDestoryer
   - Laser
+  - reset
   layers:
   - Default
   - TransparentFX

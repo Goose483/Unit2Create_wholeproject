@@ -7,6 +7,7 @@ public class EnemyMovement : MonoBehaviour
     public Vector3 speed;
     public Vector3 speedOpposite;
     public Vector3 up;
+    bool halfWay;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -16,7 +17,7 @@ public class EnemyMovement : MonoBehaviour
     IEnumerator StartMoving()
     {
 
-        for (int i = 0; i < 3; i++)
+        /*for (int i = 0; i < 3; i++)
         {
             yield return new WaitForSeconds(0.2f);
             GetComponent<Transform>().position += speed;
@@ -34,26 +35,29 @@ public class EnemyMovement : MonoBehaviour
             GetComponent<Transform>().position += speed;
         }
         GetComponent<Transform>().position += up;
+        StartCoroutine(StartMoving());*/
+
+        for (int i = 0; i < 3; i++)
+        {
+            yield return new WaitForSeconds(0.2f);
+            GetComponent<Transform>().position += speed;
+        }
+        GetComponent<Transform>().position += up;
         StartCoroutine(StartMoving());
+
+
     }
 
-     /*void OnCollisionEnter2D(Collision2D collision)
+     void OnCollisionEnter2D(Collision2D collision)
      {
         if (collision.gameObject.CompareTag("reset"))
         {
             Debug.Log("reset: " + collision.gameObject.name);
         }
-     }*/
-     
-     private Vector3 originalPosition;
+     }
 
-        void Awake()
-        {
-            originalPosition = transform.position;
-        }
-
-        public void ResetPosition()
-        {
-            transform.position = originalPosition; // Reset to the stored original position
-        }
+     public void GotToReset()
+     {
+        halfWay == !halfWay;
+     }
 }
