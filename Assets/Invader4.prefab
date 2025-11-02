@@ -166,8 +166,8 @@ MonoBehaviour:
   laser3: {fileID: 4119170725087300102, guid: e64278d0d9888d34bbb2b620b9134f52, type: 3}
   projectileSpeed: 20
   firePoint: {fileID: 5178631212163244594}
-  fireRate: 1
-  initialDelay: 0.5
+  fireRate: 0.5
+  initialDelay: 1
   upwardForce: 5
   shootSound: {fileID: 8300000, guid: d10ac8e0689a248b69cc2febbdc23fee, type: 3}
   shotsPerFire: 1
@@ -183,9 +183,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c178fc5f11bf44e6ca6d0d602c9bd3ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: {x: 0.5, y: 0, z: 0}
-  speedOpposite: {x: -1, y: 0, z: 0}
-  up: {x: 0, y: 1, z: 0}
+  moveSpeed: 1
+  verticalSpeed: 0.5
+  sideDistance: 3
+  screenLimitX: 8
+  topLimitY: 0.5
+  bottomLimitY: -4
 --- !u!1 &5148008936409434032
 GameObject:
   m_ObjectHideFlags: 0

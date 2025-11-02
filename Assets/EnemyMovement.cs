@@ -1,63 +1,52 @@
 using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
 
 public class EnemyMovement : MonoBehaviour
 {
-    public Vector3 speed;
-    public Vector3 speedOpposite;
-    public Vector3 up;
-    bool halfWay;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public float moveSpeed = 1f; // horizontal speed
+    public float verticalSpeed = 0.5f; // vertical speed
+    public float sideDistance = 3f; 
+    public float screenLimitX = 8f; 
+    public float topLimitY = 0.5f; 
+    public float bottomLimitY = -4f;
+
+    bool movingRight = true;
+    bool movingUp = true;
+
     void Start()
     {
-        StartCoroutine(StartMoving());
+        StartCoroutine(MovePattern());
     }
 
-    IEnumerator StartMoving()
+    IEnumerator MovePattern()
     {
-
-        /*for (int i = 0; i < 3; i++)
+        while (true)
         {
-            yield return new WaitForSeconds(0.2f);
-            GetComponent<Transform>().position += speed;
-        }
-        GetComponent<Transform>().position += up;
-        for (int i = 0; i < 6; i++)
-        {
-            yield return new WaitForSeconds(0.2f);
-            GetComponent<Transform>().position += speedOpposite;
-        }
-        GetComponent<Transform>().position += up;
-        for (int i = 0; i < 3; i++)
-        {
-            yield return new WaitForSeconds(0.2f);
-            GetComponent<Transform>().position += speed;
-        }
-        GetComponent<Transform>().position += up;
-        StartCoroutine(StartMoving());*/
+            Vector3 startPos = transform.position;
+            Vector3 targetPos = startPos + (movingRight ? Vector3.right : Vector3.left) * sideDistance;
+            targetPos.x = Mathf.Clamp(targetPos.x, -screenLimitX, screenLimitX);
 
-        for (int i = 0; i < 3; i++)
-        {
-            yield return new WaitForSeconds(0.2f);
-            GetComponent<Transform>().position += speed;
+            float t = 0;
+            while (t < 1f)
+            {
+                t += Time.deltaTime * moveSpeed;
+                float newX = Mathf.Lerp(startPos.x, targetPos.x, t);
+
+                // move up or down smoothly
+                float newY = transform.position.y + (movingUp ? verticalSpeed : -verticalSpeed) * Time.deltaTime;
+                newY = Mathf.Clamp(newY, bottomLimitY, topLimitY);
+
+                transform.position = new Vector3(newX, newY, transform.position.z);
+
+                // flip vertical direction if hitting top/bottom
+                if (newY >= topLimitY) movingUp = false;
+                if (newY <= bottomLimitY) movingUp = true;
+
+                yield return null;
+            }
+
+            // flip horizontal direction
+            movingRight = !movingRight;
         }
-        GetComponent<Transform>().position += up;
-        StartCoroutine(StartMoving());
-
-
     }
-
-     void OnCollisionEnter2D(Collision2D collision)
-     {
-        if (collision.gameObject.CompareTag("reset"))
-        {
-            Debug.Log("reset: " + collision.gameObject.name);
-        }
-     }
-
-     public void GotToReset()
-     {
-        halfWay == !halfWay;
-     }
 }
